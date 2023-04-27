@@ -16,7 +16,6 @@ import { useState } from 'react';
 import { numberConvert } from 'service/numberConvert';
 
 const TweetCard = () => {
-  const [tweets, setTweets] = useState(0);
   const [followers, setFollowers] = useState(100500);
   const [activeFollow, setActiveFollow] = useState(false);
 
@@ -39,7 +38,7 @@ const TweetCard = () => {
 
       <Wrapper>
         <Info>
-          <Text>{tweets} Tweets</Text>
+          <Text>{0} Tweets</Text>
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 
