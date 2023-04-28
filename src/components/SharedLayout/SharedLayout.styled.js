@@ -16,6 +16,8 @@ export const Header = styled.header`
   margin-bottom: 32px;
   color: #373737;
 
+  border-bottom: 2px solid #471ca9;
+
   > nav {
     display: flex;
     justify-content: flex-start;
@@ -25,10 +27,10 @@ export const Header = styled.header`
 `;
 
 export const StyledLink = styled(NavLink)`
-  padding: 8px 0;
+  padding: 8px 16px;
+  border-radius: 8px;
   text-decoration: none;
   color: #373737;
-  border-bottom: 2px solid transparent;
 
   font-family: 'Montserrat';
   font-weight: 500;
@@ -39,7 +41,6 @@ export const StyledLink = styled(NavLink)`
   transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &.active {
-    color: #5cd3a8;
-    border-bottom: 2px solid #5cd3a8;
+    background: #5cd3a8;
   }
 `;

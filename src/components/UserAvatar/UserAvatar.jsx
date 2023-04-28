@@ -1,16 +1,12 @@
-const {
-  Line,
-  AvatarImage,
-  Avatar,
-  AvatarThumb,
-} = require('./UserAvatar.styled');
+import noAvatar from 'images/Hansel.jpg';
+
+const { AvatarImage, Avatar, AvatarThumb } = require('./UserAvatar.styled');
 
 const UserAvatar = ({ avatar }) => {
   return (
     <Avatar>
-      <Line />
       <AvatarThumb>
-        <AvatarImage src={avatar} alt="user avatar" />
+        <AvatarImage src={avatar ? avatar : noAvatar} alt="user avatar" />
       </AvatarThumb>
     </Avatar>
   );
