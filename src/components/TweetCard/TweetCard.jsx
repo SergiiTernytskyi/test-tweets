@@ -13,36 +13,38 @@ import {
 } from './TweetCard.styled';
 import UserAvatar from 'components/UserAvatar/UserAvatar';
 import { useState } from 'react';
-import { numberConvert } from 'service/numberConvert';
+import { numberConvert } from 'services/numberConvert';
 
-const TweetCard = () => {
-  const [followers, setFollowers] = useState(100500);
+const TweetCard = ({ userTweets }) => {
+  // const [followers, setFollowers] = useState(100500);
   const [activeFollow, setActiveFollow] = useState(false);
 
-  const followersToggle = () => {
-    if (activeFollow) {
-      setFollowers(prevState => prevState - 1);
-      setActiveFollow(false);
-    } else {
-      setFollowers(prevState => prevState + 1);
-      setActiveFollow(true);
-    }
-  };
+  const { tweets, followers, avatar } = userTweets;
+
+  // const followersToggle = () => {
+  //   if (activeFollow) {
+  //     setFollowers(prevState => prevState - 1);
+  //     setActiveFollow(false);
+  //   } else {
+  //     setFollowers(prevState => prevState + 1);
+  //     setActiveFollow(true);
+  //   }
+  // };
 
   return (
     <Card>
       <Logo src={logo} alt="company logo" />
       <HeroPicture src={heroPicture} alt="main" />
 
-      <UserAvatar />
+      <UserAvatar avatar={avatar} />
 
       <Wrapper>
         <Info>
-          <Text>{0} Tweets</Text>
+          <Text>{numberConvert(tweets)} Tweets</Text>
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 
-        <Button onClick={followersToggle} activeFollow={activeFollow} />
+        <Button activeFollow={activeFollow} />
       </Wrapper>
     </Card>
   );
