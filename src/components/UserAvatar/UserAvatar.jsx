@@ -1,6 +1,6 @@
 import noAvatar from 'images/Hansel.jpg';
 
-const { AvatarImage, Avatar, AvatarThumb } = require('./UserAvatar.styled');
+import { AvatarImage, Avatar, AvatarThumb } from './UserAvatar.styled';
 
 const UserAvatar = ({ avatar }) => {
   return (

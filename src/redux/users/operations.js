@@ -15,15 +15,3 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
-
-export const toggleFollowing = createAsyncThunk(
-  'users/toggleFollowing',
-  async ({ followers }, thunkAPI) => {
-    try {
-      const { data } = await axios.patch(`/userId`, { followers });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);

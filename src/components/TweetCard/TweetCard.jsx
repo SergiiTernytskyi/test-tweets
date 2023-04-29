@@ -1,5 +1,12 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { numberConvert } from 'services/numberConvert';
+import { toggleFollowing } from 'redux/users/slice';
+
 import FollowButton from 'components/FollowButton/FollowButton';
 
+import UserAvatar from 'components/UserAvatar/UserAvatar';
 import heroPicture from 'images/heroPicture.png';
 import logo from 'images/Logo.svg';
 
@@ -11,22 +18,27 @@ import {
   Text,
   Wrapper,
 } from './TweetCard.styled';
-import UserAvatar from 'components/UserAvatar/UserAvatar';
-import { useState } from 'react';
-import { numberConvert } from 'services/numberConvert';
 
-const TweetCard = () => {
-  const [followers, setFollowers] = useState(100500);
+const TweetCard = ({ userTweets }) => {
+  const { id, followers, tweets, avatar } = userTweets;
+
   const [activeFollow, setActiveFollow] = useState(false);
+
+  const dispatch = useDispatch();
 
   const followersToggle = () => {
     if (activeFollow) {
-      setFollowers(prevState => prevState - 1);
       setActiveFollow(false);
     } else {
-      setFollowers(prevState => prevState + 1);
       setActiveFollow(true);
     }
+
+    dispatch(
+      toggleFollowing({
+        userId: id,
+        followers: activeFollow ? followers - 1 : followers + 1,
+      })
+    );
   };
 
   return (
@@ -34,11 +46,11 @@ const TweetCard = () => {
       <Logo src={logo} alt="company logo" />
       <HeroPicture src={heroPicture} alt="main" />
 
-      <UserAvatar avatar={null} />
+      <UserAvatar avatar={avatar} />
 
       <Wrapper>
         <Info>
-          <Text>{numberConvert(1000)} Tweets</Text>
+          <Text>{numberConvert(tweets)} Tweets</Text>
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 

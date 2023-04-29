@@ -1,5 +1,5 @@
 const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
-const { fetchUsers, toggleFollowing } = require('./operations');
+const { fetchUsers } = require('./operations');
 
 const initialState = {
   users: [],
@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-const extraActions = [fetchUsers, toggleFollowing];
+const extraActions = [fetchUsers];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchUsersFulfilledReducer = (state, action) => {
@@ -31,6 +31,19 @@ const contactsAnyRejectedReducer = (state, action) => {
 const usersSlice = createSlice({
   name: 'users',
   initialState,
+  reducers: {
+    resetUsers: state => {
+      state.users = [];
+    },
+    toggleFollowing: (state, action) => {
+      for (const user of state.users) {
+        if (user.id === action.payload.userId) {
+          user.followers = action.payload.followers;
+          break;
+        }
+      }
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(fetchUsers.fulfilled, fetchUsersFulfilledReducer)
@@ -40,3 +53,4 @@ const usersSlice = createSlice({
 });
 
 export const usersReducer = usersSlice.reducer;
+export const { resetUsers, toggleFollowing } = usersSlice.actions;
