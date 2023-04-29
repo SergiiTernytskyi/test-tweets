@@ -1,21 +1,25 @@
 {
   "files": {
     "main.css": "/test-tweets/static/css/main.17654e45.css",
-    "main.js": "/test-tweets/static/js/main.7bd2ac49.js",
-    "static/js/266.9c2fb217.chunk.js": "/test-tweets/static/js/266.9c2fb217.chunk.js",
-    "static/js/744.4100110c.chunk.js": "/test-tweets/static/js/744.4100110c.chunk.js",
-    "static/js/147.8f6001f7.chunk.js": "/test-tweets/static/js/147.8f6001f7.chunk.js",
+    "main.js": "/test-tweets/static/js/main.0550001f.js",
+    "static/js/328.4feb6e47.chunk.js": "/test-tweets/static/js/328.4feb6e47.chunk.js",
+    "static/js/243.86a2d918.chunk.js": "/test-tweets/static/js/243.86a2d918.chunk.js",
+    "static/js/570.1a7b8eb9.chunk.js": "/test-tweets/static/js/570.1a7b8eb9.chunk.js",
+    "static/js/582.3b4d0930.chunk.js": "/test-tweets/static/js/582.3b4d0930.chunk.js",
+    "static/media/error.png": "/test-tweets/static/media/error.f25de1c8ed3462683887.png",
+    "static/media/tweets.png": "/test-tweets/static/media/tweets.9191e0f500b8c74a9b56.png",
     "static/media/heroPicture.png": "/test-tweets/static/media/heroPicture.86562350dcaa714a1442.png",
     "static/media/Logo.svg": "/test-tweets/static/media/Logo.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/test-tweets/index.html",
     "main.17654e45.css.map": "/test-tweets/static/css/main.17654e45.css.map",
-    "main.7bd2ac49.js.map": "/test-tweets/static/js/main.7bd2ac49.js.map",
-    "266.9c2fb217.chunk.js.map": "/test-tweets/static/js/266.9c2fb217.chunk.js.map",
-    "744.4100110c.chunk.js.map": "/test-tweets/static/js/744.4100110c.chunk.js.map",
-    "147.8f6001f7.chunk.js.map": "/test-tweets/static/js/147.8f6001f7.chunk.js.map"
+    "main.0550001f.js.map": "/test-tweets/static/js/main.0550001f.js.map",
+    "328.4feb6e47.chunk.js.map": "/test-tweets/static/js/328.4feb6e47.chunk.js.map",
+    "243.86a2d918.chunk.js.map": "/test-tweets/static/js/243.86a2d918.chunk.js.map",
+    "570.1a7b8eb9.chunk.js.map": "/test-tweets/static/js/570.1a7b8eb9.chunk.js.map",
+    "582.3b4d0930.chunk.js.map": "/test-tweets/static/js/582.3b4d0930.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.17654e45.css",
-    "static/js/main.7bd2ac49.js"
+    "static/js/main.0550001f.js"
   ]
 }
