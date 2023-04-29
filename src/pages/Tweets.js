@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { fetchUsers } from 'redux/users/operations';
 import { selectError, selectIsLoading } from 'redux/users/slectors';
@@ -44,15 +45,21 @@ const Tweets = () => {
   };
 
   return (
-    <main>
-      <BackLink>Go back</BackLink>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
-      {!error && isLoading && <Loader />}
-      {!error && !isLoading && <UsersList />}
-      {!error && !isLoading && (
-        <Button onClick={loadMoreHandler}>Load More</Button>
-      )}
-    </main>
+    <>
+      <Helmet>
+        <title>Tweets - TweetsBook</title>
+      </Helmet>
+
+      <main>
+        <BackLink>Go back</BackLink>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        {!error && isLoading && <Loader />}
+        {!error && !isLoading && <UsersList />}
+        {!error && !isLoading && (
+          <Button onClick={loadMoreHandler}>Load More</Button>
+        )}
+      </main>
+    </>
   );
 };
 
