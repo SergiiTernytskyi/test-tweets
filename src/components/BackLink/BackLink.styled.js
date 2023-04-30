@@ -9,7 +9,6 @@ export const StyledLink = styled(Link)`
   margin-bottom: 24px;
   text-decoration: none;
 
-  font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;

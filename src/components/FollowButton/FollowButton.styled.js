@@ -4,7 +4,6 @@ export const Button = styled.button`
   width: 198px;
   height: 50px;
 
-  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 18px;
   line-height: 1.22;

@@ -5,7 +5,6 @@ export const TitleText = styled.h1`
   text-align: center;
   color: #373737;
 
-  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 40px;
   line-height: 1.22;
@@ -30,7 +29,6 @@ export const Text = styled.div`
   padding: 8px;
   width: 100%;
 
-  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 30px;
   line-height: 1.22;

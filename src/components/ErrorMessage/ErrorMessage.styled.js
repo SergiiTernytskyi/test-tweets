@@ -13,7 +13,6 @@ export const Image = styled.img`
 `;
 
 export const ErrorText = styled.p`
-  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;

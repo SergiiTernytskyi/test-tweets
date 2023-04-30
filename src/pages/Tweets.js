@@ -11,6 +11,7 @@ import UsersList from 'components/UsersList/UsersList';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
+import FilterForm from 'components/FilterForm/FilterForm';
 
 const PAGE_LIMIT = 3;
 
@@ -52,6 +53,7 @@ const Tweets = () => {
 
       <main>
         <BackLink>Go back</BackLink>
+        <FilterForm />
         {error && <ErrorMessage>{error}</ErrorMessage>}
         {!error && isLoading && <Loader />}
         {!error && !isLoading && <UsersList />}

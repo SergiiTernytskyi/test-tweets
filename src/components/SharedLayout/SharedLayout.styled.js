@@ -32,7 +32,6 @@ export const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: #373737;
 
-  font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;

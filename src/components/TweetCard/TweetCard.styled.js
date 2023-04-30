@@ -44,7 +44,6 @@ export const Info = styled.div`
 `;
 
 export const Text = styled.p`
-  font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
