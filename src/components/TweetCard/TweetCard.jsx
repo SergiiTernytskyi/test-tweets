@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { numberConvert } from 'services/numberConvert';
@@ -20,23 +19,15 @@ import {
 } from './TweetCard.styled';
 
 const TweetCard = ({ userTweets }) => {
-  const { id, followers, tweets, avatar } = userTweets;
-
-  const [activeFollow, setActiveFollow] = useState(false);
+  const { id, followers, tweets, avatar, follow = false } = userTweets;
 
   const dispatch = useDispatch();
 
   const followersToggle = () => {
-    if (activeFollow) {
-      setActiveFollow(false);
-    } else {
-      setActiveFollow(true);
-    }
-
     dispatch(
       toggleFollowing({
         userId: id,
-        followers: activeFollow ? followers - 1 : followers + 1,
+        followers: follow ? followers - 1 : followers + 1,
       })
     );
   };
@@ -54,7 +45,7 @@ const TweetCard = ({ userTweets }) => {
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 
-        <FollowButton onClick={followersToggle} activeFollow={activeFollow} />
+        <FollowButton onClick={followersToggle} activeFollow={follow} />
       </Wrapper>
     </Card>
   );

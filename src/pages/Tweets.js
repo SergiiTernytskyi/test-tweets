@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { fetchUsers } from 'redux/users/operations';
 import { selectError, selectIsLoading } from 'redux/users/slectors';
-import { resetUsers } from 'redux/users/slice';
 
 import BackLink from 'components/BackLink/BackLink';
 import UsersList from 'components/UsersList/UsersList';
@@ -16,37 +15,24 @@ import FilterForm from 'components/FilterForm/FilterForm';
 const PAGE_LIMIT = 3;
 
 const Tweets = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(parseInt(localStorage.getItem('page')) || 1);
 
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
 
-  const scrollToBottom = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  };
-
   useEffect(() => {
     dispatch(fetchUsers({ page, limit: PAGE_LIMIT }));
-    scrollToBottom();
   }, [dispatch, page]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetUsers());
-    };
-  }, [dispatch]);
 
   const loadMoreHandler = () => {
     setPage(prevState => prevState + 1);
+    localStorage.setItem('page', JSON.stringify(page + 1));
   };
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <title>Tweets - TweetsBook</title>
       </Helmet>
@@ -61,7 +47,7 @@ const Tweets = () => {
           <Button onClick={loadMoreHandler}>Load More</Button>
         )}
       </main>
-    </>
+    </HelmetProvider>
   );
 };
 

@@ -1,17 +1,17 @@
 import { useSelector } from 'react-redux';
 
-import { selectUsers } from 'redux/users/slectors';
+import { selectFilteredUsers } from 'redux/filter/selectors';
 
 import TweetCard from 'components/TweetCard/TweetCard';
 
 import { List } from './UsersList.styled';
 
 const UsersList = () => {
-  const users = useSelector(selectUsers);
+  const filteredUsers = useSelector(selectFilteredUsers);
 
   return (
     <List>
-      {users.map(user => {
+      {filteredUsers.map(user => {
         return (
           <li key={user.id}>
             <TweetCard userTweets={user} />

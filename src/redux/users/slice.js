@@ -11,7 +11,15 @@ const extraActions = [fetchUsers];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchUsersFulfilledReducer = (state, action) => {
-  state.users.push(...action.payload);
+  const result = action.payload.map(el => ({
+    ...el,
+    follow: false,
+  }));
+
+  const newUsers = result.filter(
+    item => !state.users.some(existingItem => existingItem.id === item.id)
+  );
+  state.users = [...state.users, ...newUsers];
 };
 
 const contactsAnyPendingReducer = state => {
@@ -39,6 +47,7 @@ const usersSlice = createSlice({
       for (const user of state.users) {
         if (user.id === action.payload.userId) {
           user.followers = action.payload.followers;
+          user.follow = !user.follow;
           break;
         }
       }
