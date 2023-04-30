@@ -14,4 +14,12 @@ export const StyledLink = styled(Link)`
   line-height: 1.2;
   text-transform: uppercase;
   color: #471ca9;
+
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  :hover,
+  :focus {
+    transform: scale(1.05);
+  }
 `;

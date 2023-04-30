@@ -39,6 +39,11 @@ export const StyledLink = styled(NavLink)`
 
   transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
+  :hover,
+  :focus {
+    color: #471ca9;
+  }
+
   &.active {
     background: #5cd3a8;
   }

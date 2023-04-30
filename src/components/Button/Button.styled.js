@@ -18,10 +18,12 @@ export const ButtonStyled = styled.button`
   border-radius: 10.3108px;
   border: transparent;
 
-  transition: background 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: scale(1);
+  transition: all 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
   :hover,
   :focus {
+    transform: scale(1.05);
     background: #5cd3a8;
   }
 `;
