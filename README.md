@@ -51,7 +51,7 @@ The app created using
 
 ## Tweetsbook - Back-end
 
-- [Link to docs](https://mockapi.io/projects/644aa956a8370fb3215512df/)
+- [Link to server](https://mockapi.io/projects/644aa956a8370fb3215512df/)
   ![Schema of the back-end](./assets/usersSchema.png)
 
 The back-end part of the app is built using capabilities of Mockapi. The users
