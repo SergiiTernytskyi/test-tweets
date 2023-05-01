@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import { fetchUsers } from 'redux/users/operations';
-import { selectError, selectIsLoading } from 'redux/users/slectors';
+import {
+  selectError,
+  selectIsLoading,
+  selectUsers,
+} from 'redux/users/slectors';
 
 import BackLink from 'components/BackLink/BackLink';
 import UsersList from 'components/UsersList/UsersList';
@@ -17,6 +21,7 @@ const PAGE_LIMIT = 3;
 const Tweets = () => {
   const [page, setPage] = useState(1);
 
+  const users = useSelector(selectUsers);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
@@ -42,7 +47,7 @@ const Tweets = () => {
         {error && <ErrorMessage>{error}</ErrorMessage>}
         {!error && isLoading && <Loader />}
         {!error && !isLoading && <UsersList />}
-        {!error && !isLoading && (
+        {!error && !isLoading && users.length >= PAGE_LIMIT * page && (
           <Button onClick={loadMoreHandler}>Load More</Button>
         )}
       </main>
