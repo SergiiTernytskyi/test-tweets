@@ -15,7 +15,7 @@ import FilterForm from 'components/FilterForm/FilterForm';
 const PAGE_LIMIT = 3;
 
 const Tweets = () => {
-  const [page, setPage] = useState(parseInt(localStorage.getItem('page')) || 1);
+  const [page, setPage] = useState(1);
 
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
@@ -28,7 +28,6 @@ const Tweets = () => {
 
   const loadMoreHandler = () => {
     setPage(prevState => prevState + 1);
-    localStorage.setItem('page', JSON.stringify(page + 1));
   };
 
   return (

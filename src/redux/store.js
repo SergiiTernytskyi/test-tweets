@@ -25,7 +25,7 @@ const middleware = [
 const tweetsPersistConfig = {
   key: 'tweets',
   storage,
-  whitelist: ['users'],
+  whitelist: ['follow'],
 };
 
 export const store = configureStore({

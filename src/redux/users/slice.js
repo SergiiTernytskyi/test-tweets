@@ -3,6 +3,7 @@ const { fetchUsers } = require('./operations');
 
 const initialState = {
   users: [],
+  follow: [],
   isLoading: false,
   error: null,
 };
@@ -11,12 +12,7 @@ const extraActions = [fetchUsers];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchUsersFulfilledReducer = (state, action) => {
-  const result = action.payload.map(el => ({
-    ...el,
-    follow: false,
-  }));
-
-  const newUsers = result.filter(
+  const newUsers = action.payload.filter(
     item => !state.users.some(existingItem => existingItem.id === item.id)
   );
   state.users = [...state.users, ...newUsers];
@@ -36,22 +32,32 @@ const contactsAnyRejectedReducer = (state, action) => {
   state.error = action.payload;
 };
 
+const toggleFollowingReducer = (state, action) => {
+  if (!state.follow.includes(action.payload)) {
+    state.follow.push(action.payload);
+    for (const user of state.users) {
+      if (user.id === action.payload) {
+        user.followers = user.followers + 1;
+        break;
+      }
+    }
+  } else {
+    const index = state.follow.findIndex(value => value === action.payload);
+    state.follow.splice(index, 1);
+    for (const user of state.users) {
+      if (user.id === action.payload) {
+        user.followers = user.followers - 1;
+        break;
+      }
+    }
+  }
+};
+
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    resetUsers: state => {
-      state.users = [];
-    },
-    toggleFollowing: (state, action) => {
-      for (const user of state.users) {
-        if (user.id === action.payload.userId) {
-          user.followers = action.payload.followers;
-          user.follow = !user.follow;
-          break;
-        }
-      }
-    },
+    toggleFollowing: toggleFollowingReducer,
   },
   extraReducers: builder =>
     builder

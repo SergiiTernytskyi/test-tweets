@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { numberConvert } from 'services/numberConvert';
 import { toggleFollowing } from 'redux/users/slice';
+import { selectFollow } from 'redux/users/slectors';
 
 import FollowButton from 'components/FollowButton/FollowButton';
 
@@ -19,17 +20,17 @@ import {
 } from './TweetCard.styled';
 
 const TweetCard = ({ userTweets }) => {
-  const { id, followers, tweets, avatar, follow = false } = userTweets;
+  const { id, followers, tweets, avatar } = userTweets;
+  const follow = useSelector(selectFollow);
 
   const dispatch = useDispatch();
 
+  const isFollow = id => {
+    return follow.includes(id);
+  };
+
   const followersToggle = () => {
-    dispatch(
-      toggleFollowing({
-        userId: id,
-        followers: follow ? followers - 1 : followers + 1,
-      })
-    );
+    dispatch(toggleFollowing(id));
   };
 
   return (
@@ -45,7 +46,7 @@ const TweetCard = ({ userTweets }) => {
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 
-        <FollowButton onClick={followersToggle} activeFollow={follow} />
+        <FollowButton onClick={followersToggle} activeFollow={isFollow(id)} />
       </Wrapper>
     </Card>
   );
