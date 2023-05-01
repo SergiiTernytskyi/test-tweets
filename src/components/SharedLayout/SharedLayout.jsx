@@ -14,6 +14,7 @@ const SharedLayout = () => {
           <StyledLink to="/tweets">Tweets</StyledLink>
         </nav>
       </Header>
+
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

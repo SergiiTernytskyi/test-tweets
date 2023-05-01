@@ -1,6 +1,6 @@
-import noAvatar from 'images/Hansel.jpg';
-
 import { AvatarImage, Avatar, AvatarThumb } from './UserAvatar.styled';
+
+import noAvatar from 'images/hansel.jpg';
 
 const UserAvatar = ({ avatar }) => {
   return (

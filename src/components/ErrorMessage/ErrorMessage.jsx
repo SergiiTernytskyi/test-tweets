@@ -1,4 +1,5 @@
 import { ErrorText, Image, Wrapper } from './ErrorMessage.styled';
+
 import error from 'images/error.png';
 
 const ErrorMessage = ({ children }) => {

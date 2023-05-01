@@ -1,7 +1,9 @@
-import { useDispatch } from 'react-redux';
-import { Select, SelectWrapper } from './FilterForm.styled';
-import { setFilter } from 'redux/filter/slice';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { setFilter } from 'redux/filter/slice';
+
+import { Select, SelectWrapper } from './FilterForm.styled';
 
 const FilterForm = () => {
   const dispatch = useDispatch();

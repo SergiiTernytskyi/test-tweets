@@ -5,10 +5,10 @@ import { toggleFollowing } from 'redux/users/slice';
 import { selectFollow } from 'redux/users/slectors';
 
 import FollowButton from 'components/FollowButton/FollowButton';
-
 import UserAvatar from 'components/UserAvatar/UserAvatar';
+
 import heroPicture from 'images/heroPicture.png';
-import logo from 'images/Logo.svg';
+import logo from 'images/logo.svg';
 
 import {
   Card,
@@ -46,7 +46,7 @@ const TweetCard = ({ userTweets }) => {
           <Text>{numberConvert(followers)} Followers</Text>
         </Info>
 
-        <FollowButton onClick={followersToggle} activeFollow={isFollow(id)} />
+        <FollowButton onClick={followersToggle} follow={isFollow(id)} />
       </Wrapper>
     </Card>
   );

@@ -1,13 +1,13 @@
 import { Button } from './FollowButton.styled';
 
-const FollowButton = ({ onClick, activeFollow }) => {
+const FollowButton = ({ onClick, follow }) => {
   return (
     <Button
       type="button"
       onClick={onClick}
-      className={activeFollow ? 'following' : null}
+      className={follow ? 'following' : null}
     >
-      {activeFollow ? 'following' : 'follow'}
+      {follow ? 'following' : 'follow'}
     </Button>
   );
 };
