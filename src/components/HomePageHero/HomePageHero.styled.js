@@ -13,10 +13,14 @@ export const TitleText = styled.h1`
 export const ImageThumb = styled.div`
   margin: 0 auto;
   margin-bottom: 32px;
-  width: 450px;
+  width: 250px;
   flex-grow: 1;
   border-radius: 8px;
   overflow: hidden;
+
+  @media (min-width: 375px) {
+    width: 450px;
+  }
 `;
 
 export const ImgStyled = styled.img`
@@ -30,9 +34,13 @@ export const Text = styled.div`
   width: 100%;
 
   font-weight: 600;
-  font-size: 30px;
+  font-size: 18px;
   line-height: 1.22;
 
   color: #373737;
   text-align: center;
+
+  @media (min-width: 375px) {
+    font-size: 30px;
+  }
 `;
