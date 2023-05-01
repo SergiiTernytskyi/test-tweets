@@ -32,6 +32,10 @@ const contactsAnyRejectedReducer = (state, action) => {
   state.error = action.payload;
 };
 
+const resetUsersReducer = state => {
+  state.users = [];
+};
+
 const toggleFollowingReducer = (state, action) => {
   if (!state.follow.includes(action.payload)) {
     state.follow.push(action.payload);
@@ -57,6 +61,7 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
+    resetUsers: resetUsersReducer,
     toggleFollowing: toggleFollowingReducer,
   },
   extraReducers: builder =>

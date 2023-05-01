@@ -15,6 +15,7 @@ import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
 import FilterForm from 'components/FilterForm/FilterForm';
+import { resetUsers } from 'redux/users/slice';
 
 const PAGE_LIMIT = 3;
 
@@ -30,6 +31,12 @@ const Tweets = () => {
   useEffect(() => {
     dispatch(fetchUsers({ page, limit: PAGE_LIMIT }));
   }, [dispatch, page]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetUsers());
+    };
+  }, [dispatch]);
 
   const loadMoreHandler = () => {
     setPage(prevState => prevState + 1);
