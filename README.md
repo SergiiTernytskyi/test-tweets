@@ -10,7 +10,6 @@ specific user by yourself.
 ## Tweetsbook - Front-end
 
 - [Link to site](https://sergiiternytskyi.github.io/test-tweets/)
-- [Link to repository](https://github.com/SergiiTernytskyi/test-tweets)
 
 This application saves Your time for finding tweets from users and providing the
 possibility to follow them.
