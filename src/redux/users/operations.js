@@ -14,3 +14,15 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
+
+export const changeFollowers = createAsyncThunk(
+  'users/changeFollowers',
+  async ({ id, followers }, thunkAPI) => {
+    try {
+      const { data } = await axios.put(`/users/${id}`, { followers });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

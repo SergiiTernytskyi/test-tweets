@@ -1,5 +1,5 @@
 const { createSlice, isAnyOf } = require('@reduxjs/toolkit');
-const { fetchUsers } = require('./operations');
+const { fetchUsers, changeFollowers } = require('./operations');
 
 const initialState = {
   users: [],
@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 };
 
-const extraActions = [fetchUsers];
+const extraActions = [fetchUsers, changeFollowers];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const fetchUsersFulfilledReducer = (state, action) => {
@@ -16,6 +16,23 @@ const fetchUsersFulfilledReducer = (state, action) => {
     item => !state.users.some(existingItem => existingItem.id === item.id)
   );
   state.users = [...state.users, ...newUsers];
+};
+
+const changeFollowersFulfieldReducer = (state, action) => {
+  const { id, followers } = action.payload;
+
+  const index = state.users.findIndex(user => user.id === id);
+  state.users.splice(index, 1, {
+    id,
+    followers,
+  });
+
+  if (!state.follow.includes(id)) {
+    state.follow.push(id);
+  } else {
+    const index = state.follow.findIndex(value => value === id);
+    state.follow.splice(index, 1);
+  }
 };
 
 const contactsAnyPendingReducer = state => {
@@ -36,41 +53,20 @@ const resetUsersReducer = state => {
   state.users = [];
 };
 
-const toggleFollowingReducer = (state, action) => {
-  if (!state.follow.includes(action.payload)) {
-    state.follow.push(action.payload);
-    for (const user of state.users) {
-      if (user.id === action.payload) {
-        user.followers = user.followers + 1;
-        break;
-      }
-    }
-  } else {
-    const index = state.follow.findIndex(value => value === action.payload);
-    state.follow.splice(index, 1);
-    for (const user of state.users) {
-      if (user.id === action.payload) {
-        user.followers = user.followers - 1;
-        break;
-      }
-    }
-  }
-};
-
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
     resetUsers: resetUsersReducer,
-    toggleFollowing: toggleFollowingReducer,
   },
   extraReducers: builder =>
     builder
       .addCase(fetchUsers.fulfilled, fetchUsersFulfilledReducer)
+      .addCase(changeFollowers.fulfilled, changeFollowersFulfieldReducer)
       .addMatcher(getActions('pending'), contactsAnyPendingReducer)
       .addMatcher(getActions('rejected'), contactsAnyRejectedReducer)
       .addMatcher(getActions('fulfilled'), contactsAnyFulfilledReducer),
 });
 
 export const usersReducer = usersSlice.reducer;
-export const { resetUsers, toggleFollowing } = usersSlice.actions;
+export const { resetUsers } = usersSlice.actions;
