@@ -53,7 +53,7 @@ const Tweets = () => {
         <FilterForm />
         {error && <ErrorMessage>{error}</ErrorMessage>}
         {!error && isLoading && <Loader />}
-        {!error && !isLoading && <UsersList />}
+        {!error && <UsersList />}
         {!error && !isLoading && users.length >= PAGE_LIMIT * page && (
           <Button onClick={loadMoreHandler}>Load More</Button>
         )}

@@ -7,17 +7,9 @@ import { selectFollow } from 'redux/users/slectors';
 import FollowButton from 'components/FollowButton/FollowButton';
 import UserAvatar from 'components/UserAvatar/UserAvatar';
 
-import heroPicture from 'images/heroPicture.png';
 import logo from 'images/logo.svg';
 
-import {
-  Card,
-  HeroPicture,
-  Info,
-  Logo,
-  Text,
-  Wrapper,
-} from './TweetCard.styled';
+import { Card, Info, Logo, Text, Wrapper } from './TweetCard.styled';
 
 const TweetCard = ({ userTweets }) => {
   const { id, followers, tweets, avatar } = userTweets;
@@ -41,8 +33,6 @@ const TweetCard = ({ userTweets }) => {
   return (
     <Card>
       <Logo src={logo} alt="company logo" />
-      <HeroPicture src={heroPicture} alt="main" />
-
       <UserAvatar avatar={avatar} />
 
       <Wrapper>

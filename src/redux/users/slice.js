@@ -19,18 +19,15 @@ const fetchUsersFulfilledReducer = (state, action) => {
 };
 
 const changeFollowersFulfieldReducer = (state, action) => {
-  const { id, followers } = action.payload;
-
-  const index = state.users.findIndex(user => user.id === id);
+  const index = state.users.findIndex(user => user.id === action.payload.id);
   state.users.splice(index, 1, {
-    id,
-    followers,
+    ...action.payload,
   });
 
-  if (!state.follow.includes(id)) {
-    state.follow.push(id);
+  if (!state.follow.includes(action.payload.id)) {
+    state.follow.push(action.payload.id);
   } else {
-    const index = state.follow.findIndex(value => value === id);
+    const index = state.follow.findIndex(value => value === action.payload.id);
     state.follow.splice(index, 1);
   }
 };
