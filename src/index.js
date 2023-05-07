@@ -6,9 +6,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { persistor, store } from 'redux/store';
 
-import App from './components/App';
+import App from './App';
 
-import { GlobalStyle } from 'components/GlobalStyle';
+import { GlobalStyle } from 'styles/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

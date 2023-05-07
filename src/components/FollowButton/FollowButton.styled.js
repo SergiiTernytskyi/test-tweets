@@ -10,6 +10,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   color: #373737;
 
+  cursor: pointer;
   background: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -19,13 +20,11 @@ export const Button = styled.button`
 
   transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 
-  :hover,
-  :focus {
+  &:hover {
     transform: scale(1.05);
   }
 
   &.following {
-    transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
     background: #5cd3a8;
   }
 `;
